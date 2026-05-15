@@ -18,19 +18,25 @@ export default function AddTodo() {
     <form
       ref={formRef}
       action={handleSubmit}
-      className="flex gap-2 bg-white rounded-2xl shadow-lg shadow-violet-100 border border-violet-100 px-3 py-3"
+      className="flex gap-2 rounded-2xl p-1.5"
+      style={{
+        background: "rgba(255,255,255,0.08)",
+        border: "1px solid rgba(255,255,255,0.15)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)",
+      }}
     >
       <input
         name="title"
         type="text"
-        placeholder="할 일을 입력하세요..."
+        placeholder="새로운 할 일을 입력하세요..."
         required
-        className="flex-1 text-sm text-gray-700 placeholder-gray-400 bg-transparent outline-none px-1"
+        className="flex-1 bg-transparent text-white placeholder-purple-300/60 text-sm outline-none px-3 py-2"
       />
       <button
         type="submit"
         disabled={isPending}
-        className="shrink-0 flex items-center gap-1.5 bg-violet-600 hover:bg-violet-700 active:bg-violet-800 disabled:opacity-60 text-white text-sm font-semibold rounded-xl px-4 py-2 transition-colors"
+        className="shrink-0 flex items-center gap-1.5 text-white text-sm font-bold rounded-xl px-5 py-2.5 transition-all duration-200 hover:scale-105 active:scale-95 disabled:opacity-60 disabled:scale-100 shimmer-btn"
+        style={{ boxShadow: "0 4px 15px rgba(139,92,246,0.5)" }}
       >
         {isPending ? (
           <span className="block h-4 w-4 rounded-full border-2 border-white border-t-transparent animate-spin" />
