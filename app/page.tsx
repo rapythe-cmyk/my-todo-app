@@ -12,7 +12,7 @@ export default async function Home() {
 
   const list = (todos as Todo[]) ?? [];
   const total = list.length;
-  const done = list.filter((t) => t.completed).length;
+  const done = list.filter((t) => t.is_completed).length;
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-violet-50 via-purple-50 to-indigo-100 flex items-start justify-center pt-16 px-4 pb-16">

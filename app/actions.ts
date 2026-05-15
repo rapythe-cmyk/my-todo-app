@@ -12,9 +12,9 @@ export async function addTodo(formData: FormData) {
   revalidatePath("/");
 }
 
-export async function toggleTodo(id: string, completed: boolean) {
+export async function toggleTodo(id: string, is_completed: boolean) {
   const supabase = await createClient();
-  await supabase.from("todos").update({ completed }).eq("id", id);
+  await supabase.from("todos").update({ is_completed }).eq("id", id);
   revalidatePath("/");
 }
 

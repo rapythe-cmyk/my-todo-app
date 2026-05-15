@@ -14,8 +14,8 @@ export default function TodoList({ todos }: { todos: Todo[] }) {
     );
   }
 
-  const remaining = todos.filter((t) => !t.completed);
-  const completed = todos.filter((t) => t.completed);
+  const remaining = todos.filter((t) => !t.is_completed);
+  const completed = todos.filter((t) => t.is_completed);
 
   return (
     <div className="space-y-2">
