@@ -1,20 +1,27 @@
 "use client";
 
-import { useRef, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { addTodo } from "@/app/actions";
 
 export default function AddTodo() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isPending, startTransition] = useTransition();
+  const [error, setError] = useState<string | null>(null);
 
   function handleSubmit(formData: FormData) {
+    setError(null);
     startTransition(async () => {
-      await addTodo(formData);
-      formRef.current?.reset();
+      const result = await addTodo(formData);
+      if (result?.error) {
+        setError(result.error);
+      } else {
+        formRef.current?.reset();
+      }
     });
   }
 
   return (
+    <div className="space-y-1.5">
     <form
       ref={formRef}
       action={handleSubmit}
@@ -42,5 +49,9 @@ export default function AddTodo() {
         추가
       </button>
     </form>
+    {error && (
+      <p className="text-xs text-red-500 px-1">⚠ {error}</p>
+    )}
+    </div>
   );
 }
